@@ -1,0 +1,6 @@
+[user]
+	name = Jqnx
+	email = jan.derpingguys@hotmail.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
