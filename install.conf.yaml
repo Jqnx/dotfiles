@@ -28,3 +28,4 @@
 
     - description: run ./scripts/bootstrap to bootstrap new machine
       command: echo "bash ~/dotfiles/scripts/bootstrap"
+      stdin: true
