@@ -84,11 +84,11 @@ install_homebrew() {
 
 	if ! _exists brew; then
 		echo "Seems like you don't have Homebrew installed!"
-		read -p "Do you agree to proceed with Homebrew installation? [y/N] " -n 1 answer
-		echo
-		if [ "${answer}" != "y" ]; then
-			return
-		fi
+		#read -p "Do you agree to proceed with Homebrew installation? [y/N] " -n 1 answer
+		#echo
+		#if [ "${answer}" != "y" ]; then
+		#	return
+		#fi
 
 		info "Installing Homebrew..."
 		NONINTERACTIVE=1 bash -c "$(curl -fsSL ${HOMEBREW_INSTALLER_URL})"
