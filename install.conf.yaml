@@ -30,5 +30,5 @@
       command: yes | bash ~/dotfiles/scripts/bootstrap
     # stdin: true
     
-    - description: Set zsh up as default shell
-      command: chsh -s $(command -v zsh)
+  # - description: Set zsh up as default shell
+  #   command: chsh -s $(command -v zsh)

@@ -154,11 +154,11 @@ install_zsh() {
 		success "You already have Zsh installed. Skipping..."
 	fi
 
-	#if _exists zsh && [[ -z "$ZSH_VERSION" ]]; then
-	#	info "Setting up Zsh as default shell..."
-	#
-	#	chsh -s "$(command -v zsh)" || error "Error: Cannot set Zsh as default shell!"
-	#fi
+	if _exists zsh && [[ -z "$ZSH_VERSION" ]]; then
+		info "Setting up Zsh as default shell..."
+
+		sudo chsh -s "$(which zsh)" "$(whoami)" || error "Error: Cannot set Zsh as default shell!"
+	fi
 
 	finish
 }
