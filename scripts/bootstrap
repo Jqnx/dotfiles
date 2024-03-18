@@ -68,7 +68,7 @@ on_start() {
 update() {
 	info "Updating the system..."
 
-	if [ "$(lsb_release -is)" = "Ubuntu"]; then
+	if [ "$(lsb_release -is)" = "Ubuntu" ]; then
 		sudo apt update
 		sudo apt upgrade -y
 		sudo apt autoremove -y
