@@ -115,7 +115,7 @@ install_git() {
 		if [ "$(uname)" = "Darwin" ]; then
 			brew install git
 		elif [ "$(uname)" = "Linux" ]; then
-			sudo apt install git
+			sudo apt install git -y
 		else
 			error "Error: Failed to install Git!"
 			return
@@ -143,7 +143,7 @@ install_zsh() {
 		if [ "$(uname)" = "Darwin" ]; then
 			brew install zsh zsh-completions
 		elif [ "$(uname)" = "Linux" ]; then
-			sudo apt install zsh
+			sudo apt install zsh -y
 		else
 			error "Error: Failed to install Zsh!"
 			return
@@ -176,7 +176,7 @@ install_nvim() {
 		if [ "$(lsb_release -is)" = "Ubuntu"]; then
 			sudo apt install software-properties-common
 			sudo add-apt-repository --yes ppa:neovim-ppa/unstable
-			sudo apt install neovim
+			sudo apt install neovim -y
 		fi
 	fi
 
@@ -187,21 +187,21 @@ install_software() {
 	info "Installing software..."
 
 	if [ "$(lsb_release -is)" = "Ubuntu"]; then
-		sudo apt install tmux
-		sudo apt install btop
-		sudo apt install neofetch
-		sudo apt install npm
-		brew install starship
+		sudo apt install tmux -y
+		sudo apt install btop -y
+		sudo apt install neofetch -y
+		sudo apt install npm -y
+		brew install starship -y
 
 		# Ansible install
 		sudo add-apt-repository --yes --update ppa:ansible/ansible
-		sudo apt install ansible
+		sudo apt install ansible -y
 
 		# Terraform install
 		wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 		echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 		sudo apt update
-		sudo apt install terraform
+		sudo apt install terraform -y
 	fi
 
 	finish
