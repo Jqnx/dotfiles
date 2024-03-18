@@ -6,10 +6,12 @@
 - clean: ['~']
 
 - link:
-    ~/.bashrc: bashrc
+    ~/.bashrc:
+      path: bashrc
+      force: true
     ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
-    ~/.oh-my-zsh: ohmyzsh/
+  # ~/.oh-my-zsh: ohmyzsh/
     ~/.config/starship.toml: starship.toml
     ~/.config/nvim: nvim/
     ~/.dotfiles: ''
