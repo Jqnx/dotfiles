@@ -29,3 +29,6 @@
     - description: run ./scripts/bootstrap to bootstrap new machine
       command: yes | bash ~/dotfiles/scripts/bootstrap
     # stdin: true
+    
+    - description: Set zsh up as default shell
+      command: chsh -s $(command -v zsh)

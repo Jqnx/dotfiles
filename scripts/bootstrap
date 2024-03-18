@@ -153,11 +153,11 @@ install_zsh() {
 		success "You already have Zsh installed. Skipping..."
 	fi
 
-	if _exists zsh && [[ -z "$ZSH_VERSION" ]]; then
-		info "Setting up Zsh as default shell..."
-
-		chsh -s "$(command -v zsh)" || error "Error: Cannot set Zsh as default shell!"
-	fi
+	#if _exists zsh && [[ -z "$ZSH_VERSION" ]]; then
+	#	info "Setting up Zsh as default shell..."
+	#
+	#	chsh -s "$(command -v zsh)" || error "Error: Cannot set Zsh as default shell!"
+	#fi
 
 	finish
 }
@@ -165,16 +165,16 @@ install_zsh() {
 install_nvim() {
 	info "Trying to detect installed nvim..."
 
-	if !_exists nvim; then
+	if ! _exists nvim; then
 		echo "Seems like you don't have neovim installed!"
 		read -p "Do you agree to proceed with neovim installation? [y/N]" -n 1 answer
 		echo
-		if [ "$answer" != "y"]; then
+		if [ "$answer" != "y" ]; then
 			return
 		fi
 
 		info "Installing neovim..."
-		if [ "$(lsb_release -is)" = "Ubuntu"]; then
+		if [ "$(lsb_release -is)" = "Ubuntu" ]; then
 			sudo apt install software-properties-common
 			sudo add-apt-repository --yes ppa:neovim-ppa/unstable
 			sudo apt install neovim -y
@@ -187,7 +187,7 @@ install_nvim() {
 install_software() {
 	info "Installing software..."
 
-	if [ "$(lsb_release -is)" = "Ubuntu"]; then
+	if [ "$(lsb_release -is)" = "Ubuntu" ]; then
 		sudo apt install tmux -y
 		sudo apt install btop -y
 		sudo apt install neofetch -y
