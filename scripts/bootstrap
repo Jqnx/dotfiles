@@ -83,7 +83,7 @@ install_homebrew() {
 	info "Trying to detect installed Homebrew..."
 
 	if ! _exists brew; then
-		echo "Seems like you don't have Homebrew installed!"
+		#echo "Seems like you don't have Homebrew installed!"
 		#read -p "Do you agree to proceed with Homebrew installation? [y/N] " -n 1 answer
 		#echo
 		#if [ "${answer}" != "y" ]; then
@@ -92,7 +92,7 @@ install_homebrew() {
 
 		info "Installing Homebrew..."
 		NONINTERACTIVE=1 bash -c "$(curl -fsSL ${HOMEBREW_INSTALLER_URL})"
-		eval "$(/opt/homebrew/bin/brew shellenv)"
+		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 	else
 		success "You already have Homebrew installed. Skipping..."
 	fi
