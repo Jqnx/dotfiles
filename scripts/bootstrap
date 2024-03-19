@@ -195,7 +195,7 @@ install_software() {
 		sudo apt install btop -y
 		sudo apt install neofetch -y
 		sudo apt install npm -y
-		brew install starship -y
+		brew install starship
 		#curl -sS https://starship.rs/install.sh | sh
 
 		# Ansible install
