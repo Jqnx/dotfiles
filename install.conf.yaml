@@ -26,6 +26,9 @@
     - description: Installing submodules
       command: git submodule update --init --recursive
 
+    - description: Cloning zplug repo
+      command: ./scripts/zplug
+
     - description: run ./scripts/bootstrap to bootstrap new machine
       command: yes | bash ~/dotfiles/scripts/bootstrap
     # stdin: true

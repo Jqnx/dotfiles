@@ -232,6 +232,13 @@ install_software() {
 }
 
 install_zsh_plugins() {
+	info "Trying to detect installed zplug..."
+	if ! _exists zplug; then
+		source ~/.zplug/init.zsh
+	else
+		success "You already have zplug installed. Skipping..."
+	fi
+
 	info "Checking to install zplug plugins..."
 	if ! zplug check; then
 		info "Installing zplug plugins."
