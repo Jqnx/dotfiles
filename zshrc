@@ -50,7 +50,7 @@ zplug "plugins/terraform", from:oh-my-zsh
 # custom plugins
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search", as: plugin
+zplug "zsh-users/zsh-history-substring-search", as:plugin
 zplug "chriskempson/base16-shell"
 zplug "hlissner/zsh-autopair"
 zplug "djui/alias-tips"
@@ -68,7 +68,7 @@ if ! zplug check; then
 fi
 
 # Load zplug plugins
-zplug load --verbose
+zplug load
 
 #source ~/catppuccin-themes/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 #plugins=(ansible command-not-found common-aliases extract gh git gitignore history-substring-search kubectl minikube nmap rsync sudo systemd terraform tmux zsh-autosuggestions zsh-syntax-highlighting)

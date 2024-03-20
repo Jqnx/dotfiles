@@ -55,8 +55,8 @@ on_start() {
 	info "              by @denysdovhan                  "
 	info "                                               "
 
-	info "This script will guide you through installing git, zsh and dofiles itself."
-	echo "It will not install anything without your direct agreement!"
+	info "This script will install git, zsh, nvim, dotfiles itself, and some more."
+	echo "xdd"
 	echo
 	read -p "Do you want to proceed with installation? [y/N] " -n 1 answer
 	echo
@@ -269,7 +269,6 @@ main() {
 	install_zsh "$*"
 	install_nvim "$*"
 	install_software "$*"
-	install_zsh_plugins "$*"
 	on_finish "$*"
 }
 
