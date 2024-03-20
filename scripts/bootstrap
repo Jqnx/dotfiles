@@ -197,7 +197,7 @@ install_software() {
 		sudo apt install npm -y
 		sudo apt install fzf -y
 		brew install starship
-		brew install gitui
+		brew install jesseduffield/lazygit/lazygit
 		#curl -sS https://starship.rs/install.sh | sh
 
 		# Ansible install
