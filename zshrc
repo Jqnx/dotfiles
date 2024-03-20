@@ -1,112 +1,91 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+#export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# use vim as standard editor
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+#--------------------------------
+# Aliases
+#--------------------------------
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../../'
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# use nvim if available
+if [ -x "$(command -v nvim)" ]; then
+    alias vim='nvim'
+fi
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+#--------------------------------
+# zplug
+#--------------------------------
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+source ~/.zplug/init.zsh
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+# oh-my-zsh plugins
+zplug "plugins/aliases", from:oh-my-zsh
+zplug "plugins/colorize", from:oh-my-zsh
+zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "plugins/extract", from:oh-my-zsh
+zplug "plugins/history-substring-search", from:oh-my-zsh, defer:2
+zplug "plugins/rsync", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/gitignore", from:oh-my-zsh
+zplug "plugins/systemd", from:oh-my-zsh
+zplug "plugins/ansible", from:oh-my-zsh
+zplug "plugins/gh", from:oh-my-zsh
+zplug "plugins/kubectl", from:oh-my-zsh
+zplug "plugins/minikube", from:oh-my-zsh
+zplug "plugins/nmap", from:oh-my-zsh
+zplug "plugins/sudo", from:oh-my-zsh
+zplug "plugins/terraform", from:oh-my-zsh
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+# custom plugins
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "chriskempson/base16-shell"
+zplug "hlissner/zsh-autopair"
+zplug "djui/alias-tips"
+zplug "z-shell/zsh-eza", as:plugin
+zplug "anatolykopyl/sshukh"
+zplug "brokendisk/dune-quotes"
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# Install plugins if there are plugins that have not been installed
+if ! zplug check; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+# Load zplug plugins
+zplug load
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+#source ~/catppuccin-themes/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+#plugins=(ansible command-not-found common-aliases extract gh git gitignore history-substring-search kubectl minikube nmap rsync sudo systemd terraform tmux zsh-autosuggestions zsh-syntax-highlighting)
+#fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+#source $ZSH/oh-my-zsh.sh
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+#--------------------------------
+# Autocomplete
+#--------------------------------
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+# catppuccin mocha colors for fzf
+#export FZF_DEFAULT_OPTS=" \
+#--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+#--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+#--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-source ~/catppuccin-themes/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
-
-plugins=(ansible command-not-found common-aliases extract gh git gitignore history-substring-search kubectl minikube nmap rsync sudo systemd terraform tmux zsh-autosuggestions zsh-syntax-highlighting)
-
-
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-source $ZSH/oh-my-zsh.sh
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-# You may need to manually set your language environment
-
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+#--------------------------------
+# Additional tools
+#--------------------------------
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 #eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"

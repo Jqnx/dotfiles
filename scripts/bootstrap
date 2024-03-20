@@ -195,6 +195,7 @@ install_software() {
 		sudo apt install btop -y
 		sudo apt install neofetch -y
 		sudo apt install npm -y
+		sudo apt install fzf -y
 		brew install starship
 		#curl -sS https://starship.rs/install.sh | sh
 
@@ -214,6 +215,16 @@ install_software() {
 			sudo apt install terraform -y
 		else
 			success "You already have terraform installed. Skipping..."
+		fi
+
+		# Eza install
+		if ! _exists eza; then
+			wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+			echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+			sudo apt update
+			sudo apt install eza -y
+		else
+			success "You already have eza installed. Skipping..."
 		fi
 	fi
 
