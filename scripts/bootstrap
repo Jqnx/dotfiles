@@ -231,6 +231,16 @@ install_software() {
 	finish
 }
 
+install_zsh_plugins() {
+	info "Checking to install zplug plugins..."
+	if ! zplug check; then
+		info "Installing zplug plugins."
+		zplug install
+	else
+		success "You already have all the zplug plugins installed. Skipping..."
+	fi
+}
+
 on_finish() {
 	echo
 	success "Setup was successfully done!"
@@ -269,6 +279,7 @@ main() {
 	install_zsh "$*"
 	install_nvim "$*"
 	install_software "$*"
+	install_zsh_plugins "$*"
 	on_finish "$*"
 }
 

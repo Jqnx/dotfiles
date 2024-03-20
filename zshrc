@@ -32,7 +32,7 @@ zplug "plugins/aliases", from:oh-my-zsh
 zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
-zplug "plugins/history-substring-search", from:oh-my-zsh, defer:2
+zplug "plugins/history-substring-search", from:oh-my-zsh, defer:3
 zplug "plugins/rsync", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
@@ -49,13 +49,14 @@ zplug "plugins/terraform", from:oh-my-zsh
 
 # custom plugins
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "chriskempson/base16-shell"
 zplug "hlissner/zsh-autopair"
 zplug "djui/alias-tips"
-zplug "z-shell/zsh-eza", as:plugin
+zplug "z-shell/zsh-eza"
 zplug "anatolykopyl/sshukh"
 zplug "brokendisk/dune-quotes"
+zplug "zsh-users/zsh-completions"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
@@ -66,7 +67,7 @@ if ! zplug check; then
 fi
 
 # Load zplug plugins
-zplug load
+zplug load --verbose
 
 #source ~/catppuccin-themes/zsh-syntax-highlighting/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 #plugins=(ansible command-not-found common-aliases extract gh git gitignore history-substring-search kubectl minikube nmap rsync sudo systemd terraform tmux zsh-autosuggestions zsh-syntax-highlighting)
