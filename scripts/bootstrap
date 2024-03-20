@@ -231,24 +231,6 @@ install_software() {
 	finish
 }
 
-install_zsh_plugins() {
-	info "Trying to detect installed zplug..."
-	if ! _exists zplug; then
-		#source ~/.zplug/init.zsh
-		source ~/.zshrc
-	else
-		success "You already have zplug installed. Skipping..."
-	fi
-
-	info "Checking to install zplug plugins..."
-	if ! zplug check; then
-		info "Installing zplug plugins."
-		zplug install
-	else
-		success "You already have all the zplug plugins installed. Skipping..."
-	fi
-}
-
 on_finish() {
 	echo
 	success "Setup was successfully done!"
