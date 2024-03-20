@@ -32,7 +32,7 @@ zplug "plugins/aliases", from:oh-my-zsh
 zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
-zplug "plugins/history-substring-search", from:oh-my-zsh, defer:3
+#zplug "plugins/history-substring-search", from:oh-my-zsh, defer:3
 zplug "plugins/rsync", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
@@ -49,7 +49,8 @@ zplug "plugins/terraform", from:oh-my-zsh
 
 # custom plugins
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search", as: plugin
 zplug "chriskempson/base16-shell"
 zplug "hlissner/zsh-autopair"
 zplug "djui/alias-tips"
