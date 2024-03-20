@@ -15,7 +15,7 @@ export EDITOR="$VISUAL"
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
-alias gitui='gitui -t mocha.ron'
+alias lg="lazygit"
 
 # use nvim if available
 if [ -x "$(command -v nvim)" ]; then

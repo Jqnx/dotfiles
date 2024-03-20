@@ -18,7 +18,6 @@
     ~/.config/starship.toml: starship.toml
     ~/.config/nvim: nvim/
     ~/.dotfiles: ''
-    ~/.config/gitui/: gitui/
 
 - create:
     ~/Projects:
