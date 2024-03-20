@@ -134,11 +134,11 @@ install_zsh() {
 
 	if ! _exists zsh; then
 		echo "Seems like you don't have Zsh installed!"
-		read -p "Do you agree to proceed with Zsh installation? [y/N] " -n 1 answer
-		echo
-		if [ "${answer}" != "y" ]; then
-			return
-		fi
+		#read -p "Do you agree to proceed with Zsh installation? [y/N] " -n 1 answer
+		#echo
+		#if [ "${answer}" != "y" ]; then
+		#	return
+		#fi
 
 		info "Installing Zsh..."
 
@@ -197,6 +197,7 @@ install_software() {
 		sudo apt install npm -y
 		sudo apt install fzf -y
 		brew install starship
+		brew install gitui
 		#curl -sS https://starship.rs/install.sh | sh
 
 		# Ansible install
