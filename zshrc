@@ -93,3 +93,11 @@ zplug load
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 #eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"
 eval "$(starship init zsh)"
+
+# Created by `pipx` on 2024-03-20 22:51:29
+export PATH="$PATH:/home/jan/.local/bin"
+
+# Vagrant config
+export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+export VAGRANT_DEFAULT_PROVIDER="virtualbox"
+export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
