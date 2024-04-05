@@ -191,6 +191,9 @@ install_software() {
 	info "Installing software..."
 
 	if [ "$(lsb_release -is)" = "Ubuntu" ]; then
+		sudo apt install apt-transport-https -y
+		sudo apt install ca-certificates -y
+		sudo apt install curl -y
 		sudo apt install tmux -y
 		sudo apt install btop -y
 		sudo apt install neofetch -y
@@ -228,8 +231,6 @@ install_software() {
 		# Kubectl install
 		if ! _exists kubectl; then
 			if [ "$(lsb_release -is)" = "Ubuntu" ]; then
-				sudo apt install -y apt-transport-https ca-certificates curl
-				sudo mkdir /etc/apt/keyrings
 				curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 				echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 				sudo apt update
