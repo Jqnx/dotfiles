@@ -191,14 +191,9 @@ install_software() {
 	info "Installing software..."
 
 	if [ "$(lsb_release -is)" = "Ubuntu" ]; then
-		sudo apt install apt-transport-https -y
-		sudo apt install ca-certificates -y
-		sudo apt install curl -y
-		sudo apt install tmux -y
-		sudo apt install btop -y
-		sudo apt install neofetch -y
-		sudo apt install npm -y
-		sudo apt install fzf -y
+		sudo apt install -y apt-transport-https ca-certificates curl tmux btop neofetch npm fzf ripgrep fd-find build-essential bat shellcheck
+		ln -s $(which batcat) ~/.local/bin/bat
+		ln -s $(which fdfind) ~/.local/bin/fd
 		brew install starship
 		brew install jesseduffield/lazygit/lazygit
 		#curl -sS https://starship.rs/install.sh | sh
