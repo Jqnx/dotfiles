@@ -44,6 +44,7 @@ finish() {
 export DOTFILES=${1:-"$HOME/.dotfiles"}
 GITHUB_REPO_URL_BASE="https://github.com/Jqnx/dotfiles"
 HOMEBREW_INSTALLER_URL="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+KUBE_REPO_VERSION="v1.30"
 
 on_start() {
 	info "           __        __   ____ _  __           "
@@ -269,8 +270,8 @@ install_software() {
 		# Kubectl install
 		if ! _exists kubectl; then
 			if [ "$(lsb_release -is)" = "Ubuntu" ]; then
-				wget -O- https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-				echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+				curl -fsSL https://pkgs.k8s.io/core:/stable:/${KUBE_REPO_VERSION}/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+				echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/${KUBE_REPO_VERSION}/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 				sudo apt update
 				sudo apt install kubectl -y
 			fi
