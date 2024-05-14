@@ -24,6 +24,7 @@
 
 - create:
     ~/Projects:
+    ~/.local/bin:
  
 - shell:
     - description: Installing submodules
