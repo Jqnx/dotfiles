@@ -13,9 +13,12 @@
       path: bashrc
       force: true
     ~/.gitconfig: gitconfig
-    ~/.zshrc: zshrc
+  #~/.zshrc: zshrc
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/fish_plugins: fish/fish_plugins
+    ~/.config/fish/conf.d/tide.fish: fish/conf.d/tide.fish
   # ~/.oh-my-zsh: ohmyzsh/
-    ~/.config/starship.toml: starship.toml
+  # ~/.config/starship.toml: starship.toml
     ~/.config/nvim: nvim/
     ~/.dotfiles: ''
 
@@ -26,8 +29,8 @@
     - description: Installing submodules
       command: git submodule update --init --recursive
 
-    - description: Cloning zplug repo
-      command: ./scripts/zplug
+  #- description: Cloning zplug repo
+  #  command: ./scripts/zplug
 
     - description: run ./scripts/bootstrap to bootstrap new machine
       command: yes | bash ~/dotfiles/scripts/bootstrap

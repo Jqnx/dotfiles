@@ -129,35 +129,68 @@ install_git() {
 	finish
 }
 
-install_zsh() {
-	info "Trying to detect installed Zsh..."
+#install_zsh() {
+#	info "Trying to detect installed Zsh..."
+#
+#	if ! _exists zsh; then
+#		echo "Seems like you don't have Zsh installed!"
+#		#read -p "Do you agree to proceed with Zsh installation? [y/N] " -n 1 answer
+#		#echo
+#		#if [ "${answer}" != "y" ]; then
+#		#	return
+#		#fi
+#
+#		info "Installing Zsh..."
+#
+#		if [ "$(uname)" = "Darwin" ]; then
+#			brew install zsh zsh-completions
+#		elif [ "$(uname)" = "Linux" ]; then
+#			sudo apt install zsh -y
+#		else
+#			error "Error: Failed to install Zsh!"
+#			return
+#		fi
+#	else
+#		success "You already have Zsh installed. Skipping..."
+#	fi
+#
+#	if _exists zsh && [[ -z "$ZSH_VERSION" ]]; then
+#		info "Setting up Zsh as default shell..."
+#
+#		sudo chsh -s "$(which zsh)" "$(whoami)" || error "Error: Cannot set Zsh as default shell!"
+#	fi
+#
+#	finish
+#}
 
-	if ! _exists zsh; then
-		echo "Seems like you don't have Zsh installed!"
-		#read -p "Do you agree to proceed with Zsh installation? [y/N] " -n 1 answer
-		#echo
-		#if [ "${answer}" != "y" ]; then
-		#	return
-		#fi
+install_fish() {
+	info "Trying to detect installed fish..."
 
-		info "Installing Zsh..."
+	if ! _exists fish; then
+		info "Installing fish..."
 
-		if [ "$(uname)" = "Darwin" ]; then
-			brew install zsh zsh-completions
-		elif [ "$(uname)" = "Linux" ]; then
-			sudo apt install zsh -y
+		if [ "$(lsb_release -is)" = "Ubuntu"]; then
+			sudo apt install software-properties-common
+			sudo add-apt-repository --yes ppa:fish-shell/release-3
+			sudo apt install fish
 		else
-			error "Error: Failed to install Zsh!"
+			error "Error: Failed to install fish!"
 			return
 		fi
 	else
-		success "You already have Zsh installed. Skipping..."
+		success "You already have fish installed. Skipping..."
 	fi
 
-	if _exists zsh && [[ -z "$ZSH_VERSION" ]]; then
-		info "Setting up Zsh as default shell..."
+	if _exists fish; then
+		info "Setting up fish as default shell..."
+		sudo chsh -s "$(which fish)" "$(whoami)" || error "Error: Cannot set fish as default shell!"
+	fi
 
-		sudo chsh -s "$(which zsh)" "$(whoami)" || error "Error: Cannot set Zsh as default shell!"
+	if ! _exists fisher; then
+		info "Installing fisher..."
+		curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+	else
+		success "You already have fisher installed. Skipping..."
 	fi
 
 	finish
@@ -179,6 +212,8 @@ install_nvim() {
 			sudo apt install software-properties-common
 			sudo add-apt-repository --yes ppa:neovim-ppa/unstable
 			sudo apt install neovim -y
+		else
+			error "Error: Failed to install neovim!"
 		fi
 	else
 		success "You already have neovim installed. Skipping..."
@@ -191,10 +226,10 @@ install_software() {
 	info "Installing software..."
 
 	if [ "$(lsb_release -is)" = "Ubuntu" ]; then
-		sudo apt install -y apt-transport-https ca-certificates curl tmux btop neofetch npm fzf ripgrep fd-find build-essential bat shellcheck
+		sudo apt install -y apt-transport-https ca-certificates curl tmux btop neofetch npm fzf ripgrep fd-find build-essential bat shellcheck peco
 		ln -s $(which batcat) ~/.local/bin/bat
 		ln -s $(which fdfind) ~/.local/bin/fd
-		brew install starship
+		#brew install starship
 		brew install jesseduffield/lazygit/lazygit
 		#curl -sS https://starship.rs/install.sh | sh
 
@@ -284,7 +319,8 @@ main() {
 	update "$*"
 	install_homebrew "$*"
 	install_git "$*"
-	install_zsh "$*"
+	#install_zsh "$*"
+	install_fish "$*"
 	install_nvim "$*"
 	install_software "$*"
 	on_finish "$*"

@@ -57,7 +57,6 @@ zplug "hlissner/zsh-autopair"
 zplug "djui/alias-tips"
 zplug "z-shell/zsh-eza"
 zplug "anatolykopyl/sshukh"
-zplug "brokendisk/dune-quotes"
 zplug "zsh-users/zsh-completions"
 
 # Install plugins if there are plugins that have not been installed
@@ -93,6 +92,9 @@ zplug load
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 #eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"
 eval "$(starship init zsh)"
+source <(kubectl completion zsh)
+source <(helm completion zsh)
+eval "$(ssh-agent -s)"
 
 # Created by `pipx` on 2024-03-20 22:51:29
 export PATH="$PATH:/home/jan/.local/bin"
