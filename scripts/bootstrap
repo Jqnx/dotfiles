@@ -226,7 +226,8 @@ install_software() {
 	info "Installing software..."
 
 	if [ "$(lsb_release -is)" = "Ubuntu" ]; then
-		sudo apt install -y apt-transport-https ca-certificates curl tmux btop neofetch npm fzf ripgrep fd-find build-essential bat shellcheck peco
+		sudo apt install -y apt-transport-https ca-certificates curl tmux neofetch npm fzf ripgrep fd-find build-essential bat shellcheck peco
+		sudo snap install btop
 		ln -s $(which batcat) ~/.local/bin/bat
 		ln -s $(which fdfind) ~/.local/bin/fd
 		#brew install starship
