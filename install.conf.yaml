@@ -37,5 +37,8 @@
       command: yes | bash ~/dotfiles/scripts/bootstrap
     # stdin: true
     
+    - description: Install fisher with plugins
+      command: fish ~/dotfiles/scripts/fisher
+    
   # - description: Set zsh up as default shell
   #   command: chsh -s $(command -v zsh)
