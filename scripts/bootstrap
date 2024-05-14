@@ -187,13 +187,6 @@ install_fish() {
 		sudo chsh -s "$(which fish)" "$(whoami)" || error "Error: Cannot set fish as default shell!"
 	fi
 
-	#if ! _exists fisher; then
-	#	info "Installing fisher..."
-	#	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-	#else
-	#	success "You already have fisher installed. Skipping..."
-	#fi
-
 	finish
 }
 
@@ -201,12 +194,12 @@ install_nvim() {
 	info "Trying to detect installed neovim..."
 
 	if ! _exists nvim; then
-		echo "Seems like you don't have neovim installed!"
-		read -p "Do you agree to proceed with neovim installation? [y/N]" -n 1 answer
-		echo
-		if [ "$answer" != "y" ]; then
-			return
-		fi
+		#echo "Seems like you don't have neovim installed!"
+		#read -p "Do you agree to proceed with neovim installation? [y/N]" -n 1 answer
+		#echo
+		#if [ "$answer" != "y" ]; then
+		#	return
+		#fi
 
 		info "Installing neovim..."
 		if [ "$(lsb_release -is)" = "Ubuntu" ]; then
@@ -215,6 +208,7 @@ install_nvim() {
 			sudo apt install neovim -y
 		else
 			error "Error: Failed to install neovim!"
+			return
 		fi
 	else
 		success "You already have neovim installed. Skipping..."
@@ -227,20 +221,31 @@ install_software() {
 	info "Installing software..."
 
 	if [ "$(lsb_release -is)" = "Ubuntu" ]; then
-		sudo apt install -y apt-transport-https ca-certificates curl tmux neofetch npm fzf ripgrep fd-find build-essential bat shellcheck peco
-		sudo snap install btop
-
-		if [[ ! -f ~/.local/bin/bat ]]; then
-			ln -s $(which batcat) ~/.local/bin/bat
-		fi
-
-		if [[ ! -f ~/.local/bin/fd ]]; then
-			ln -s $(which fdfind) ~/.local/bin/fd
-		fi
-
+		sudo apt install -y apt-transport-https ca-certificates curl tmux neofetch npm fzf ripgrep build-essential shellcheck peco
 		#brew install starship
-		brew install jesseduffield/lazygit/lazygit
-		#curl -sS https://starship.rs/install.sh | sh
+
+		# bat install
+		if ! _exists bat; then
+			sudo apt install -y bat
+			ln -s $(which batcat) ~/.local/bin/bat
+		else
+			success "You already have bat installed. Skipping..."
+		fi
+
+		# fdfind install
+		if ! _exists fd; then
+			sudo apt install -y fd-find
+			ln -s $(which fdfind) ~/.local/bin/fd
+		else
+			success "You already have fd-find installed. Skipping..."
+		fi
+
+		# Lazygit install
+		if ! _exists lazygit; then
+			brew install jesseduffield/lazygit/lazygit
+		else
+			success "You already have lazygit installed. Skipping..."
+		fi
 
 		# Ansible install
 		if ! _exists ansible; then
@@ -270,6 +275,7 @@ install_software() {
 		# Kubectl install
 		if ! _exists kubectl; then
 			if [ "$(lsb_release -is)" = "Ubuntu" ]; then
+				sudo mkdir /etc/apt/keyrings/
 				curl -fsSL https://pkgs.k8s.io/core:/stable:/${KUBE_REPO_VERSION}/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 				echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/${KUBE_REPO_VERSION}/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 				sudo apt update
