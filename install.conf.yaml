@@ -16,10 +16,10 @@
   #~/.zshrc: zshrc
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/fish_plugins: fish/fish_plugins
-    ~/.config/fish/conf.d/tide.fish: fish/conf.d/tide.fish
-  # ~/.oh-my-zsh: ohmyzsh/
-  # ~/.config/starship.toml: starship.toml
+    ~/.config/starship.toml: starship.toml
     ~/.config/nvim: nvim/
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.dotfiles: ''
 
 - create:
