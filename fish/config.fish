@@ -71,3 +71,15 @@ end
 if test -d (brew --prefix)"/share/fish/vendor_completions.d"
     set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
 end
+
+#----------------------------------
+# NodeJS
+#----------------------------------
+
+set -gx nvm_default_version latest
+
+#----------------------------------
+# Starship
+#----------------------------------
+
+starship init fish | source
