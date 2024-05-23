@@ -19,7 +19,7 @@
     ~/.config/starship.toml: starship.toml
     ~/.config/nvim: nvim/
     ~/.tmux.conf: tmux/.tmux.conf
-    ~/.tmux/plugins/tpm: tmux/plugins/tpm
+  #~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.dotfiles: ''
 
 - create:
