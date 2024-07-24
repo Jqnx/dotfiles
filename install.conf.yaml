@@ -6,39 +6,40 @@
       stdout: true
       stderr: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.bashrc:
       path: bashrc
       force: true
     ~/.gitconfig: gitconfig
-  #~/.zshrc: zshrc
+    #~/.zshrc: zshrc
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/fish_plugins: fish/fish_plugins
+    ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
     ~/.config/starship.toml: starship.toml
     ~/.config/nvim: nvim/
     ~/.tmux.conf: tmux/.tmux.conf
-  #~/.tmux/plugins/tpm: tmux/plugins/tpm
-    ~/.dotfiles: ''
+    #~/.tmux/plugins/tpm: tmux/plugins/tpm
+    ~/.dotfiles: ""
 
 - create:
     ~/Projects:
     ~/.local/bin:
- 
+
 - shell:
     - description: Installing submodules
       command: git submodule update --init --recursive
 
-  #- description: Cloning zplug repo
-  #  command: ./scripts/zplug
+    #- description: Cloning zplug repo
+    #  command: ./scripts/zplug
 
     - description: run ./scripts/bootstrap to bootstrap new machine
       command: yes | bash ~/dotfiles/scripts/bootstrap
     # stdin: true
-    
+
     - description: Install fisher with plugins
       command: fish ~/dotfiles/scripts/fisher
-    
+
   # - description: Set zsh up as default shell
   #   command: chsh -s $(command -v zsh)
