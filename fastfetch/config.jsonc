@@ -6,16 +6,11 @@
   },
   "display": {
     "separator": "",
-    "keyWidth": 15,
+    "key": {
+      "width": 15,
+    },
   },
   "modules": [
-    {
-      // draw borders first to make colors of left and right border consistant
-      "key": " user",
-      "type": "title",
-      "format": "{user-name}",
-      "keyColor": "31",
-    },
     {
       "key": "󰇅 host",
       "type": "title",
@@ -25,38 +20,40 @@
     {
       "key": "󰅐 uptime",
       "type": "uptime",
-      "keyColor": "33",
+      "keyColor": "32",
     },
     {
       "key": "󰟾 distro",
       "type": "os",
-      "keyColor": "34",
+      "keyColor": "32",
     },
     {
       "key": " kernel",
       "type": "kernel",
-      "keyColor": "35",
+      "keyColor": "32",
     },
+    "break",
     {
       "key": "󰇄 desktop",
       "type": "de",
-      "keyColor": "36",
+      "keyColor": "35",
     },
     {
       "key": " term",
       "type": "terminal",
-      "keyColor": "31",
+      "keyColor": "35",
     },
     {
       "key": " shell",
       "type": "shell",
-      "keyColor": "32",
+      "keyColor": "35",
     },
+    "break",
     {
       "key": "󰍛 cpu",
       "type": "cpu",
       "showPeCoreCount": true,
-      "keyColor": "33",
+      "keyColor": "34",
     },
     {
       "key": "󰉉 disk",
@@ -67,13 +64,13 @@
     {
       "key": "󰑭 memory",
       "type": "memory",
-      "keyColor": "35",
+      "keyColor": "34",
     },
     {
       "key": "󰩟 network",
       "type": "localip",
       "format": "{ipv4} ({ifname})",
-      "keyColor": "36",
+      "keyColor": "34",
     },
     "break",
     {
