@@ -1,5 +1,3 @@
-set fish_greeting ""
-
 set -gx TERM xterm-256color
 set -gx EDITOR nvim
 set -gx PAGER less
@@ -31,7 +29,12 @@ alias g git
 alias lg lazygit
 alias k kubectl
 command -qv nvim && alias vim nvim
+command -qv terraform && alias tf terraform
 
+
+
+
+set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 
 #----------------------------------
 # PATHS

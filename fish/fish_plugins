@@ -1,5 +1,4 @@
 jorgebucaran/fisher
-ilancosman/tide@v6
 catppuccin/fish
 jethrokuan/z
 patrickf1/fzf.fish
@@ -13,3 +12,4 @@ oh-my-fish/plugin-brew
 nickeb96/puffer-fish
 rubiev/plugin-fuck
 danhper/fish-ssh-agent
+franciscolourenco/done
