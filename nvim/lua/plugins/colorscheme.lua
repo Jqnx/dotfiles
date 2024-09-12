@@ -40,13 +40,27 @@ return {
         treesitter_context = true,
         which_key = true,
       },
+      transparent_background = true,
+    },
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     },
   },
 
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha",
+      colorscheme = "tokyonight-moon",
     },
   },
 }
