@@ -94,7 +94,7 @@ install_homebrew() {
     info "Installing Homebrew..."
     NONINTERACTIVE=1 bash -c "$(curl -fsSL ${HOMEBREW_INSTALLER_URL})"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    source ~/.bashrc
+    source "$HOME/.bashrc"
   else
     success "You already have Homebrew installed. Skipping..."
   fi

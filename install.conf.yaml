@@ -9,18 +9,18 @@
 - clean: ["~"]
 
 - link:
-    ~/.bashrc:
-      path: bashrc
-      force: true
-    ~/.gitconfig: gitconfig
-    #~/.zshrc: zshrc
-    ~/.config/fish/config.fish: fish/config.fish
-    ~/.config/fish/fish_plugins: fish/fish_plugins
+    ~/.bashrc: bashrc
+    ~/.config/bat/: bat/
+    ~/.config/btop/btop.conf: btop/btop.conf
     ~/.config/fastfetch/config.jsonc: fastfetch/config.jsonc
-    ~/.config/starship.toml: starship.toml
+    ~/.config/fish/: fish/
+    ~/.config/lazygit/config.yml: lazygit/config.yml
     ~/.config/nvim: nvim/
+    ~/.config/starship.toml: starship.toml
     ~/.tmux.conf: tmux/.tmux.conf
+    ~/.config/tmux/tokyonight_personal.tmux: tmux/tokyonight_personal.tmux
     #~/.tmux/plugins/tpm: tmux/plugins/tpm
+    ~/.gitconfig: gitconfig
     ~/.dotfiles: ""
 
 - create:
@@ -30,9 +30,6 @@
 - shell:
     - description: Installing submodules
       command: git submodule update --init --recursive
-
-    #- description: Cloning zplug repo
-    #  command: ./scripts/zplug
 
     - description: run ./scripts/bootstrap to bootstrap new machine
       command: yes | bash ~/dotfiles/scripts/bootstrap
