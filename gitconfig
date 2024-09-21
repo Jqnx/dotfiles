@@ -8,5 +8,6 @@
 	defaultBranch = main
 [core]
 	editor = nvim
+	hooksPath = /home/jan/.git/hooks
 [submodule]
 	recurse = true
