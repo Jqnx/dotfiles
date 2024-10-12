@@ -105,13 +105,13 @@
     frame_width = 1
 
     # Defines color of the frame around the notification window.
-    frame_color = "#ffffff"
+    #frame_color = "#ffffff"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 0
+    gap_size = 3
 
     # Define a color for the separator.
     # possible values are:
@@ -211,7 +211,8 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = "Papirus-Dark,Adwaita"
+    #icon_theme = "Papirus-Dark,Adwaita"
+    icon_theme = "rose-pine-icons"
     # You can also set multiple icon themes, with the leftmost one being used first.
     # icon_theme = "Adwaita, breeze"
 
@@ -309,6 +310,9 @@
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
 
+    background = "#26233a"
+    foreground = "#e0def4"
+
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
 [experimental]
@@ -323,26 +327,34 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#000000CC"
-    foreground = "#888888"
+    background = "#26273d"
+    #foreground = "#888888"
+    highlight = "#31748f"
+    frame_color = "#31748f"
     timeout = 6
+    format = "<b><span foreground='#31748f'>%s</span></b>\n%b"
     # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    default_icon = "dialog-information"
 
 [urgency_normal]
-    background = "#000000CC"
-    foreground = "#ffffff"
+    background = "#362e3c"
+    #foreground = "#ffffff"
+    highlight = "#f6c177"
+    frame_color = "#f6c177"
     timeout = 6
+    format = "<b><span foreground='#f6c177'>%s</span></b>\n%b"
     # Icon for notifications with normal urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    default_icon = "dialog-warning"
 
 [urgency_critical]
-    background = "#900000CC"
-    foreground = "#ffffff"
-    frame_color = "#ffffff"
+    background = "#35263d"
+    #foreground = "#ffffff"
+    highlight = "#eb6f92"
+    frame_color = "#eb6f92"
     timeout = 6
+    format = "<b><span foreground='#eb6f92'>%s</span></b>\n%b"
     # Icon for notifications with critical urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    default_icon = "dialog-error"
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
