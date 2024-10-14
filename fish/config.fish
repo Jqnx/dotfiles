@@ -49,7 +49,7 @@ fish_add_path /home/jan/.local/bin
 fish_add_path node_modules/.bin
 
 # Go
-set -g GOPATH $HOME/go
+set -g GOPATH /usr/local/go
 fish_add_path $GOPATH/bin
 
 # Homebrew
