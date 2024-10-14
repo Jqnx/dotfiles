@@ -12,6 +12,9 @@ set -gx PAGER less
 #set -g async_prompt_functions _pure_prompt_git
 #set -g pure_color_git_dirty pure_color_danger
 
+# Rose Pine
+#fish_config theme save "Rosé Pine"
+
 #----------------------------------
 # Aliases
 #----------------------------------
@@ -51,29 +54,6 @@ fish_add_path node_modules/.bin
 # Go
 set -g GOPATH $HOME/go
 fish_add_path $GOPATH/bin
-
-# Homebrew
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
-#----------------------------------
-# Vagrant
-#----------------------------------
-
-set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS 1
-set -gx VAGRANT_DEFAULT_PROVIDER virtualbox
-fish_add_path /mnt/c/Program Files/Oracle/VirtualBox
-
-#----------------------------------
-# Homebrew
-#----------------------------------
-
-if test -d (brew --prefix)"/share/fish/completions"
-    set -p fish_complete_path (brew --prefix)/share/fish/completions
-end
-
-if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-    set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-end
 
 #----------------------------------
 # NodeJS
