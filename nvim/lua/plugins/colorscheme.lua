@@ -58,9 +58,21 @@ return {
   },
 
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = true,
+    priority = 1000,
+    opts = {
+      styles = {
+        transparency = true,
+      },
+    },
+  },
+
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight-moon",
+      colorscheme = "rose-pine",
     },
   },
 }
