@@ -168,7 +168,7 @@
     // Power Menu
     "custom/exit": {
         "format": "",
-        "on-click": "wlogout",
+        "on-click": "~/.config/rofi/powermenu/type-1/powermenu.sh",
         "tooltip": false
     },
 

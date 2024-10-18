@@ -40,7 +40,8 @@
         //"custom/wallpaper",
         //"wlr/taskbar",
         //"group/quicklinks",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
 
     // Modules Center
