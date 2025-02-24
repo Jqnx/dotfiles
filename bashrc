@@ -118,3 +118,4 @@ fi
 # Add homebrew to PATH
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"
+. "/home/jan/.deno/env"
